@@ -13,28 +13,28 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(ApiEndpoints.VIDEO_ADMIN_API_ENDPOINT)
+@RequestMapping(ApiEndpoints.RENTVIDEOAPP_API_ENDPOINT)
 public class AdminVideoController {
 
     private final VideoService videoService;
 
-    @GetMapping
+    @GetMapping(ApiEndpoints.VIDEO_ADMIN_API_ENDPOINT)
     public ResponseEntity<List<VideoResponse>> getAllVideos() {
         return ResponseEntity.ok(videoService.getAll());
     }
 
-    @PostMapping
+    @PostMapping(ApiEndpoints.VIDEO_ADMIN_API_ENDPOINT)
     public ResponseEntity<VideoResponse> create(@RequestBody VideoRequest request) {
         return new ResponseEntity<>(videoService.create(request), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(ApiEndpoints.VIDEO_ADMIN_API_ENDPOINT + "/{id}")
     public VideoResponse update(@PathVariable Long id,
                                 @RequestBody VideoRequest request) {
         return videoService.update(id, request);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(ApiEndpoints.VIDEO_ADMIN_API_ENDPOINT + "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         videoService.delete(id);

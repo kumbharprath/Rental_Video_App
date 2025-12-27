@@ -15,13 +15,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(ApiEndpoints.VIDEO_API_ENDPOINT)
+@RequestMapping(ApiEndpoints.RENTVIDEOAPP_API_ENDPOINT)
 public class VideoController {
 
     private final VideoService videoService;
 
     // Accessible by CUSTOMER and ADMIN
-    @GetMapping
+    @GetMapping(ApiEndpoints.VIDEO_API_ENDPOINT)
     public ResponseEntity<List<VideoResponse>> getAllVideos() {
         return ResponseEntity.ok(videoService.getAll());
     }
